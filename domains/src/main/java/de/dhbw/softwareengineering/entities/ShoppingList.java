@@ -16,6 +16,7 @@ public class ShoppingList {
     private UUID personUUID;
 
     public ShoppingList() {
+        this.id = UUID.randomUUID();
     }
 
     public ShoppingList(List<ShoppingItem> shoppingItemList, Double totalPrice, UUID personUUID) {

@@ -16,6 +16,7 @@ public class ExerciseList {
     private Status status;
 
     public ExerciseList() {
+        this.id = UUID.randomUUID();
     }
 
     public ExerciseList(List<Exercise> list) {
