@@ -5,6 +5,7 @@ import de.dhbw.softwareengineering.values.Status;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,11 +18,7 @@ public class ExerciseList {
 
     public ExerciseList() {
         this.id = UUID.randomUUID();
-    }
-
-    public ExerciseList(List<Exercise> list) {
-        this.id = UUID.randomUUID();
-        this.list = list;
+        this.list = new ArrayList<>();
         this.status = Status.TODO;
     }
 

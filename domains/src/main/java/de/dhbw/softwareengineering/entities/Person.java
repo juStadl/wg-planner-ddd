@@ -20,7 +20,6 @@ public class Person {
     private Gender gender;
 
     public Person() {
-        this.id = UUID.randomUUID();
     }
 
     public Person(Name name, Address address, Date birthDate, Gender gender) {
