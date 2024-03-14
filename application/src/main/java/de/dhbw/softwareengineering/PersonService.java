@@ -9,7 +9,7 @@ import de.dhbw.softwareengineering.values.Name;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +22,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person create(Name name, Address address, Date date, Gender gender){
+    public Person create(Name name, Address address, LocalDate date, Gender gender){
         Person person = new Person(name, address, date, gender);
 
         return personRepository.save(person);
