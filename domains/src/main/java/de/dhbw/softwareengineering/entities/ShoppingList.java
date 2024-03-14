@@ -4,6 +4,7 @@ import de.dhbw.softwareengineering.values.ShoppingItem;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,10 +19,10 @@ public class ShoppingList {
     public ShoppingList() {
     }
 
-    public ShoppingList(List<ShoppingItem> shoppingItemList, Double totalPrice, UUID personUUID) {
+    public ShoppingList(UUID personUUID) {
         this.id = UUID.randomUUID();
-        this.shoppingItemList = shoppingItemList;
-        this.totalPrice = totalPrice;
+        this.shoppingItemList = new ArrayList<>();
+        this.totalPrice = 0.0;
         this.personUUID = personUUID;
     }
 
@@ -38,6 +39,9 @@ public class ShoppingList {
     }
 
     public Double getTotalPrice() {
+        for(ShoppingItem shoppingItem : shoppingItemList){
+            totalPrice += shoppingItem.getPrice();
+        }
         return totalPrice;
     }
 

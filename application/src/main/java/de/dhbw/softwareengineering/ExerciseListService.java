@@ -23,7 +23,7 @@ public class ExerciseListService {
     }
 
     public ExerciseList create(){
-        ExerciseList exerciseList = new ExerciseList(new ArrayList<>());
+        ExerciseList exerciseList = new ExerciseList();
 
         return exerciseListRepository.save(exerciseList);
     }
