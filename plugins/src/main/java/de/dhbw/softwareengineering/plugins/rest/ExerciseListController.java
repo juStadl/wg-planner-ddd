@@ -63,7 +63,7 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ExerciseList addExercise(
        @PathVariable UUID uuid,
        @RequestBody @Valid Exercise exercise)

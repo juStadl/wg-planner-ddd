@@ -18,6 +18,11 @@ public class ExerciseListRepositoryBridge implements ExerciseListRepository {
     }
 
     @Override
+    public ExerciseList insert(ExerciseList exerciseList) {
+        return dataExerciseListRepository.insert(exerciseList);
+    }
+
+    @Override
     public Optional<ExerciseList> findById(UUID id) {
         return dataExerciseListRepository.findById(id);
     }

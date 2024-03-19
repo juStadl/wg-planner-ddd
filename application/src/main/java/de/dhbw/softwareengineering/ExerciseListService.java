@@ -8,7 +8,6 @@ import de.dhbw.softwareengineering.values.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +24,7 @@ public class ExerciseListService {
     public ExerciseList create(){
         ExerciseList exerciseList = new ExerciseList();
 
-        return exerciseListRepository.save(exerciseList);
+        return exerciseListRepository.insert(exerciseList);
     }
 
     public ExerciseList getObject(UUID uuid) throws ExerciseListNotFoundException {
