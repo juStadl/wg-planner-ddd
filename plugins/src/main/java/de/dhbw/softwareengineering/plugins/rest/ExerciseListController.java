@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.print.attribute.standard.Media;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ExerciseList create()
     {
         return service.create();
@@ -47,7 +48,7 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{uuid}/list")
+    @GetMapping(value = "/{uuid}/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Exercise> getList(
             @PathVariable UUID uuid)
     {
@@ -63,7 +64,7 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/{uuid}/add")
+    @PutMapping(value = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ExerciseList addExercise(
        @PathVariable UUID uuid,
        @RequestBody @Valid Exercise exercise)
@@ -72,7 +73,7 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/{uuid}/deleteExercise/{exerciseUuid}")
+    @DeleteMapping(value = "/{uuid}/deleteExercise/{exerciseUuid}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ExerciseList deleteExercise(
             @PathVariable UUID uuid,
             @PathVariable UUID exerciseUuid)
@@ -81,7 +82,8 @@ public class ExerciseListController {
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @PutMapping("/{uuid}/updateStatus") public ExerciseList updateStatus(
+    @PutMapping(value = "/{uuid}/updateStatus", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ExerciseList updateStatus(
             @PathVariable UUID uuid,
             @RequestBody @Valid Status status)
     {
