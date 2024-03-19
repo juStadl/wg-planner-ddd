@@ -4,10 +4,13 @@ import java.util.Objects;
 import java.util.UUID;
 
 public final class Exercise {
-    private final UUID uuid;
-    private final String title;
-    private final String description;
-    private final UUID personUuid;
+    private UUID uuid;
+    private String title;
+    private String description;
+    private UUID personUuid;
+
+    public Exercise() {
+    }
 
     public Exercise(String title, String description, UUID personUuid) {
         this.uuid = UUID.randomUUID();
