@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ExerciseListRepresentationToExerciseListMapper implements Function<ExerciseListRepresentation, ExerciseList> {
     @Override
     @NonNull
-    public ExerciseList apply(@NonNull ExerciseListRepresentation exerciseListRepresentation) {
+    public ExerciseList apply(@NonNull final ExerciseListRepresentation exerciseListRepresentation) {
         return map(exerciseListRepresentation);
     }
 

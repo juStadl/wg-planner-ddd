@@ -11,7 +11,7 @@ public class PersonRepresentationToPersonMapper implements Function<PersonRepres
 
     @Override
     @NonNull
-    public Person apply(@NonNull PersonRepresentation personRepresentation) {
+    public Person apply(@NonNull final PersonRepresentation personRepresentation) {
         return map(personRepresentation);
     }
 

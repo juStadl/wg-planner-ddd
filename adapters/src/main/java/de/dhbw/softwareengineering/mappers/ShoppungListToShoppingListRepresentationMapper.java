@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ShoppungListToShoppingListRepresentationMapper implements Function<ShoppingList, ShoppingListRepresentation> {
     @Override
     @NonNull
-    public ShoppingListRepresentation apply(@NonNull ShoppingList shoppingList) {
+    public ShoppingListRepresentation apply(@NonNull final ShoppingList shoppingList) {
         return map(shoppingList);
     }
 

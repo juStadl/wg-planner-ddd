@@ -11,7 +11,7 @@ public class ExerciseListToExerciseListRepresentationMapper implements Function<
 
     @Override
     @NonNull
-    public ExerciseListRepresentation apply(@NonNull ExerciseList exerciseList) {
+    public ExerciseListRepresentation apply(@NonNull final ExerciseList exerciseList) {
         return map(exerciseList);
     }
 
