@@ -43,21 +43,15 @@ public class ExerciseListService {
         return exerciseListRepository.save(exerciseList);
     }
 
-    public ExerciseList addExercise(UUID uuid, Exercise exercise){
+    public ExerciseList addExercise(UUID uuid, Exercise e){
         ExerciseList exerciseList = getObject(uuid);
+        Exercise exercise = new Exercise(e.getTitle(), e.getDescription(), e.getPersonUuid());
         exerciseList.getList().add(exercise);
 
         return exerciseListRepository.save(exerciseList);
     }
 
-    public ExerciseList deleteExercise(UUID listObjectUuid, UUID exerciseUuid) {
-        ExerciseList exerciseList = getObject(listObjectUuid);
-        exerciseList.getList().removeIf(exercise -> exercise.getUuid().equals(exerciseUuid));
-
-        return exerciseListRepository.save(exerciseList);
-    }
-
-    public void delete(UUID uuid){
+    public void delete(UUID uuid) throws ExerciseListNotFoundException{
         exerciseListRepository.delete(uuid);
     }
 }

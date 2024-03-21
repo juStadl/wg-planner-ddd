@@ -42,7 +42,7 @@ public class ShoppingListService {
         return shoppingListRepository.save(shoppingList);
     }
 
-    public void delete(UUID listUuid){
+    public void delete(UUID listUuid) throws ShoppingListNotFoundException{
         shoppingListRepository.delete(listUuid);
     }
 }

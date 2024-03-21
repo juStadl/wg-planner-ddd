@@ -71,15 +71,6 @@ public class ExerciseListController {
         return service.addExercise(uuid, exercise);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping(value = "/{uuid}/deleteExercise/{exerciseUuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ExerciseList deleteExercise(
-            @PathVariable UUID uuid,
-            @PathVariable UUID exerciseUuid)
-    {
-        return service.deleteExercise(uuid, exerciseUuid);
-    }
-
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping(value = "/{uuid}/updateStatus", produces = MediaType.APPLICATION_JSON_VALUE)
     public ExerciseList updateStatus(
