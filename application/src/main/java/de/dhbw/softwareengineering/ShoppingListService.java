@@ -36,14 +36,8 @@ public class ShoppingListService {
 
     public ShoppingList addShoppingItem(UUID listUuid, ShoppingItem shoppingItem){
         ShoppingList shoppingList = getShoppingList(listUuid);
-        shoppingList.getShoppingItemList().add(shoppingItem);
-
-        return shoppingListRepository.save(shoppingList);
-    }
-
-    public ShoppingList deleteShoppingItem(UUID listUuid, UUID shoppingItemUuid){
-        ShoppingList shoppingList = getShoppingList(listUuid);
-        shoppingList.getShoppingItemList().removeIf(shoppingItem -> shoppingItem.getUuid().equals(shoppingItemUuid));
+        ShoppingItem item = new ShoppingItem(shoppingItem.getTitle(), shoppingItem.getQuantity(), shoppingItem.getPrice());
+        shoppingList.getShoppingItemList().add(item);
 
         return shoppingListRepository.save(shoppingList);
     }

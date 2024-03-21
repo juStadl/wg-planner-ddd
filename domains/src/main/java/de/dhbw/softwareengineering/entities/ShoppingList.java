@@ -42,6 +42,8 @@ public class ShoppingList {
         for(ShoppingItem shoppingItem : shoppingItemList){
             totalPrice += shoppingItem.getPrice();
         }
+
+        //TODO: nicht mehr speichern, sondern berechnen
         return totalPrice;
     }
 
