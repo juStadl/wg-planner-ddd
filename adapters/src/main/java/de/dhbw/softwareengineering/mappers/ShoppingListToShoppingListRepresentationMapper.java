@@ -7,7 +7,7 @@ import de.dhbw.softwareengineering.representations.ShoppingListRepresentation;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ShoppungListToShoppingListRepresentationMapper implements Function<ShoppingList, ShoppingListRepresentation> {
+public class ShoppingListToShoppingListRepresentationMapper implements Function<ShoppingList, ShoppingListRepresentation> {
     @Override
     @NonNull
     public ShoppingListRepresentation apply(@NonNull final ShoppingList shoppingList) {
