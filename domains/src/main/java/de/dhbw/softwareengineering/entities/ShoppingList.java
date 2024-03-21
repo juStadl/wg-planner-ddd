@@ -30,6 +30,10 @@ public class ShoppingList {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public List<ShoppingItem> getShoppingItemList() {
         return shoppingItemList;
     }
