@@ -25,30 +25,24 @@ public class ShoppingListService {
         return shoppingListRepository.save(shoppingList);
     }
 
-    public ShoppingList getShoppingList(UUID listUuid) throws ShoppingListNotFoundException {
-        return shoppingListRepository.findById(listUuid)
+    public ShoppingList getShoppingList(UUID uuid) throws ShoppingListNotFoundException {
+        return shoppingListRepository.findById(uuid)
                 .orElseThrow(() -> new ShoppingListNotFoundException("No shopping list with such an UUID."));
     }
 
-    public List<ShoppingItem> getShoppingItemList(UUID listUuid){
-        return getShoppingList(listUuid).getShoppingItemList();
+    public List<ShoppingItem> getShoppingItemList(UUID uuid){
+        return getShoppingList(uuid).getShoppingItemList();
     }
 
     public ShoppingList addShoppingItem(UUID listUuid, ShoppingItem shoppingItem){
         ShoppingList shoppingList = getShoppingList(listUuid);
-        shoppingList.getShoppingItemList().add(shoppingItem);
+        ShoppingItem item = new ShoppingItem(shoppingItem.getTitle(), shoppingItem.getQuantity(), shoppingItem.getPrice());
+        shoppingList.getShoppingItemList().add(item);
 
         return shoppingListRepository.save(shoppingList);
     }
 
-    public ShoppingList deleteShoppingItem(UUID listUuid, UUID shoppingItemUuid){
-        ShoppingList shoppingList = getShoppingList(listUuid);
-        shoppingList.getShoppingItemList().removeIf(shoppingItem -> shoppingItem.getUuid().equals(shoppingItemUuid));
-
-        return shoppingListRepository.save(shoppingList);
-    }
-
-    public void delete(UUID listUuid){
+    public void delete(UUID listUuid) throws ShoppingListNotFoundException{
         shoppingListRepository.delete(listUuid);
     }
 }

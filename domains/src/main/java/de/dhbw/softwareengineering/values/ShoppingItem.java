@@ -4,10 +4,13 @@ import java.util.Objects;
 import java.util.UUID;
 
 public final class ShoppingItem {
-    UUID uuid;
-    String title;
-    Integer quantity;
-    Double price;
+    private UUID uuid;
+    private String title;
+    private Integer quantity;
+    private Double price;
+
+    public ShoppingItem() {
+    }
 
     public ShoppingItem(String title, Integer quantity, Double price) {
         this.uuid = UUID.randomUUID();

@@ -6,7 +6,7 @@ import de.dhbw.softwareengineering.values.Name;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Document(collection = "person")
@@ -16,13 +16,13 @@ public class Person {
     private Name name;
     private Address address;
 
-    private Date birthDate;
+    private LocalDate birthDate;
     private Gender gender;
 
     public Person() {
     }
 
-    public Person(Name name, Address address, Date birthDate, Gender gender) {
+    public Person(Name name, Address address, LocalDate birthDate, Gender gender) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.address = address;
@@ -50,11 +50,11 @@ public class Person {
         this.address = address;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

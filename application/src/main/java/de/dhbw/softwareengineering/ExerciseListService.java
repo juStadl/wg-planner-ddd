@@ -8,7 +8,6 @@ import de.dhbw.softwareengineering.values.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +24,7 @@ public class ExerciseListService {
     public ExerciseList create(){
         ExerciseList exerciseList = new ExerciseList();
 
-        return exerciseListRepository.save(exerciseList);
+        return exerciseListRepository.insert(exerciseList);
     }
 
     public ExerciseList getObject(UUID uuid) throws ExerciseListNotFoundException {
@@ -44,21 +43,15 @@ public class ExerciseListService {
         return exerciseListRepository.save(exerciseList);
     }
 
-    public ExerciseList addExercise(UUID uuid, Exercise exercise){
+    public ExerciseList addExercise(UUID uuid, Exercise e){
         ExerciseList exerciseList = getObject(uuid);
+        Exercise exercise = new Exercise(e.getTitle(), e.getDescription(), e.getPersonUuid());
         exerciseList.getList().add(exercise);
 
         return exerciseListRepository.save(exerciseList);
     }
 
-    public ExerciseList deleteExercise(UUID listObjectUuid, UUID exerciseUuid) {
-        ExerciseList exerciseList = getObject(listObjectUuid);
-        exerciseList.getList().removeIf(exercise -> exercise.getUuid().equals(exerciseUuid));
-
-        return exerciseListRepository.save(exerciseList);
-    }
-
-    public void delete(UUID uuid){
+    public void delete(UUID uuid) throws ExerciseListNotFoundException{
         exerciseListRepository.delete(uuid);
     }
 }
