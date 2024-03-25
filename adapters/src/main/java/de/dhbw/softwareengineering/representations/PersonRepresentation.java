@@ -3,10 +3,12 @@ package de.dhbw.softwareengineering.representations;
 import de.dhbw.softwareengineering.values.Address;
 import de.dhbw.softwareengineering.values.Gender;
 import de.dhbw.softwareengineering.values.Name;
+import lombok.Builder;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Builder
 public class PersonRepresentation {
 
     private final UUID id;
@@ -16,8 +18,8 @@ public class PersonRepresentation {
     private final LocalDate birthDate;
     private final Gender gender;
 
-    public PersonRepresentation(final UUID id, final Name name, final Address address, final LocalDate birthDate, final Gender gender) {
-        this.id = id;
+    public PersonRepresentation(final Name name, final Address address, final LocalDate birthDate, final Gender gender) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.address = address;
         this.birthDate = birthDate;

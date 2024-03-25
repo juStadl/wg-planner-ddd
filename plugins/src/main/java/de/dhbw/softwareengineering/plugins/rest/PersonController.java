@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.PersonService;
-import de.dhbw.softwareengineering.entities.Person;
+import de.dhbw.softwareengineering.representations.PersonRepresentation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,33 +26,29 @@ public class PersonController {
     private final PersonService service;
 
     @Autowired
-    public PersonController(PersonService service) {
+    public PersonController(final PersonService service) {
         this.service = service;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(
+    public PersonRepresentation create(
             @Parameter(description = "Person to be created.")
-            @RequestBody @Valid Person person
+            @RequestBody @Valid PersonRepresentation person
     ){
-        return service.create(
-                person.getName(),
-                person.getAddress(),
-                person.getBirthDate(),
-                person.getGender()
-        );
+        return service.create(person);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> getAll(){
+    public List<PersonRepresentation> getAll(){
+
         return service.getAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person get(
+    public PersonRepresentation get(
             @PathVariable UUID id)
     {
         return service.get(id);
@@ -60,10 +56,10 @@ public class PersonController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(
+    public PersonRepresentation update(
             @PathVariable UUID id,
             @Parameter(description = "Updated person information")
-            @RequestBody @Valid Person person)
+            @RequestBody @Valid PersonRepresentation person)
     {
         return service.update(id, person);
     }

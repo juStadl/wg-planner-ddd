@@ -11,5 +11,5 @@ public interface PersonRepository {
     Person save(Person person);
     Optional<Person> findByUuid(UUID personId);
     void delete(UUID personId);
-
+    Person insert(Person person);
 }
