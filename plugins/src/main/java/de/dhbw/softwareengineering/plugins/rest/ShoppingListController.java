@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.ShoppingListService;
-import de.dhbw.softwareengineering.entities.ShoppingList;
+import de.dhbw.softwareengineering.representations.ShoppingListRepresentation;
 import de.dhbw.softwareengineering.values.ShoppingItem;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class ShoppingListController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShoppingList create(
+    public ShoppingListRepresentation create(
             @RequestBody UUID personUuid)
     {
         return service.create(personUuid);
@@ -39,7 +39,7 @@ public class ShoppingListController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShoppingList get(
+    public ShoppingListRepresentation get(
             @PathVariable UUID uuid)
     {
         return service.getShoppingList(uuid);
@@ -55,7 +55,7 @@ public class ShoppingListController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping(path = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShoppingList addItem(
+    public ShoppingListRepresentation addItem(
             @PathVariable UUID uuid,
             @RequestBody @Valid ShoppingItem item)
     {

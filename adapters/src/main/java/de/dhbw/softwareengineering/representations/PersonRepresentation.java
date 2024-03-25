@@ -26,6 +26,15 @@ public class PersonRepresentation {
         this.gender = gender;
     }
 
+
+    public PersonRepresentation(UUID id, Name name, Address address, LocalDate birthDate, Gender gender) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.gender = gender;
+    }
+
     public UUID getId() {
         return id;
     }
