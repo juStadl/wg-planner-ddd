@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.ExerciseListService;
-import de.dhbw.softwareengineering.entities.ExerciseList;
+import de.dhbw.softwareengineering.representations.ExerciseListRepresentation;
 import de.dhbw.softwareengineering.values.Exercise;
 import de.dhbw.softwareengineering.values.Status;
 import jakarta.validation.Valid;
@@ -33,14 +33,14 @@ public class ExerciseListController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ExerciseList create()
+    public ExerciseListRepresentation create()
     {
         return service.create();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ExerciseList get(
+    public ExerciseListRepresentation get(
             @PathVariable UUID uuid)
     {
         return service.getObject(uuid);
@@ -64,7 +64,7 @@ public class ExerciseListController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(value = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ExerciseList addExercise(
+    public ExerciseListRepresentation addExercise(
        @PathVariable UUID uuid,
        @RequestBody @Valid Exercise exercise)
     {
@@ -73,7 +73,7 @@ public class ExerciseListController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping(value = "/{uuid}/updateStatus", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ExerciseList updateStatus(
+    public ExerciseListRepresentation updateStatus(
             @PathVariable UUID uuid,
             @RequestBody @Valid Status status)
     {

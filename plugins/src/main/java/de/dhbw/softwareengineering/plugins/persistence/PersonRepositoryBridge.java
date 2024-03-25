@@ -37,4 +37,9 @@ public class PersonRepositoryBridge implements PersonRepository {
     public void delete(UUID personId) {
         dataPersonRepository.deleteById(personId);
     }
+
+    @Override
+    public Person insert(Person person) {
+        return dataPersonRepository.insert(person);
+    }
 }

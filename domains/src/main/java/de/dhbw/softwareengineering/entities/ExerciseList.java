@@ -30,6 +30,10 @@ public class ExerciseList {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public List<Exercise> getList() {
         return list;
     }

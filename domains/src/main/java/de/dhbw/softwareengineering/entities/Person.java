@@ -19,11 +19,8 @@ public class Person {
     private LocalDate birthDate;
     private Gender gender;
 
-    public Person() {
-    }
-
-    public Person(Name name, Address address, LocalDate birthDate, Gender gender) {
-        this.id = UUID.randomUUID();
+    public Person(UUID id, Name name, Address address, LocalDate birthDate, Gender gender) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.birthDate = birthDate;
@@ -32,6 +29,10 @@ public class Person {
 
     public UUID getId() {
         return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Name getName() {
