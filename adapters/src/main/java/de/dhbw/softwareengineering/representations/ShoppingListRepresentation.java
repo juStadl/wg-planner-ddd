@@ -1,10 +1,12 @@
 package de.dhbw.softwareengineering.representations;
 
 import de.dhbw.softwareengineering.values.ShoppingItem;
+import lombok.Builder;
 
 import java.util.List;
 import java.util.UUID;
 
+@Builder
 public class ShoppingListRepresentation {
 
     private final UUID id;
