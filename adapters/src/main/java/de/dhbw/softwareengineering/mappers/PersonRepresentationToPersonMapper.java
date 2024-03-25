@@ -1,10 +1,11 @@
 package de.dhbw.softwareengineering.mappers;
 
-import com.mongodb.Function;
 import com.mongodb.lang.NonNull;
 import de.dhbw.softwareengineering.entities.Person;
 import de.dhbw.softwareengineering.representations.PersonRepresentation;
 import org.springframework.stereotype.Component;
+
+import java.util.function.Function;
 
 @Component
 public class PersonRepresentationToPersonMapper implements Function<PersonRepresentation, Person> {
