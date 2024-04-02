@@ -1,5 +1,6 @@
 package de.dhbw.softwareengineering.representations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dhbw.softwareengineering.values.Address;
 import de.dhbw.softwareengineering.values.Gender;
 import de.dhbw.softwareengineering.values.Name;
