@@ -27,6 +27,14 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(Name name, Address address, LocalDate birthDate, Gender gender) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.gender = gender;
+    }
+
     public UUID getId() {
         return id;
     }
