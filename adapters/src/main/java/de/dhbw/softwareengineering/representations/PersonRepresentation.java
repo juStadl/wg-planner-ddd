@@ -1,5 +1,6 @@
 package de.dhbw.softwareengineering.representations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dhbw.softwareengineering.values.Address;
 import de.dhbw.softwareengineering.values.Gender;
 import de.dhbw.softwareengineering.values.Name;
@@ -11,12 +12,19 @@ import java.util.UUID;
 @Builder
 public class PersonRepresentation {
 
-    private final UUID id;
-    private final Name name;
-    private final Address address;
+    private UUID id;
 
-    private final LocalDate birthDate;
-    private final Gender gender;
+    @JsonProperty("name")
+    private Name name;
+
+    @JsonProperty("address")
+    private Address address;
+
+    @JsonProperty("birthdate")
+    private LocalDate birthDate;
+
+    @JsonProperty("gender")
+    private Gender gender;
 
     public PersonRepresentation(final Name name, final Address address, final LocalDate birthDate, final Gender gender) {
         this.id = UUID.randomUUID();
@@ -26,8 +34,7 @@ public class PersonRepresentation {
         this.gender = gender;
     }
 
-
-    public PersonRepresentation(UUID id, Name name, Address address, LocalDate birthDate, Gender gender) {
+    public PersonRepresentation(final UUID id, final Name name, final Address address, final LocalDate birthDate, final Gender gender) {
         this.id = id;
         this.name = name;
         this.address = address;

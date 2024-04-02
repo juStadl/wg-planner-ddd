@@ -31,4 +31,9 @@ public class ShoppingListRepositoryBridge implements ShoppingListRepository {
     public void delete(UUID id) {
         dataShoppingListRepository.deleteById(id);
     }
+
+    @Override
+    public ShoppingList insert(ShoppingList shoppingList) {
+        return dataShoppingListRepository.insert(shoppingList);
+    }
 }
