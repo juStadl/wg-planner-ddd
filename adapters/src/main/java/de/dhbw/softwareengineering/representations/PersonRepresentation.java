@@ -42,6 +42,9 @@ public class PersonRepresentation {
         this.gender = gender;
     }
 
+    public PersonRepresentation() {
+    }
+
     public UUID getId() {
         return id;
     }
