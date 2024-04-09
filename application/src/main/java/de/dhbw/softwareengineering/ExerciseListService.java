@@ -41,7 +41,7 @@ public class ExerciseListService {
         return getObject(uuid).getList();
     }
 
-    private ExerciseList getExerciseList(UUID uuid){
+    public ExerciseList getExerciseList(UUID uuid){
         return exerciseListRepository.findById(uuid)
                 .orElseThrow(() -> new ExerciseListNotFoundException("No exerciselist with such a UUID"));
     }
