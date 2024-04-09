@@ -26,6 +26,7 @@ public class PersonService {
 
     public PersonRepresentation create(PersonRepresentation personRepresentation){
         Person person = new Person(
+                personRepresentation.getId(),
                 personRepresentation.getName(),
                 personRepresentation.getAddress(),
                 personRepresentation.getBirthDate(),
