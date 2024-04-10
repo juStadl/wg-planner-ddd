@@ -169,6 +169,7 @@ class ExerciseListServiceTests {
 
         Assertions.assertThat(result).isNotNull();
         Assertions.assertThat(result.getList().size()).isEqualByComparingTo(1);
+        verify(exerciseListRepository).save(exerciseList);
     }
 
     @Test
