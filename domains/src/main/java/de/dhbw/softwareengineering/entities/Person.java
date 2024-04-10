@@ -3,6 +3,7 @@ package de.dhbw.softwareengineering.entities;
 import de.dhbw.softwareengineering.values.Address;
 import de.dhbw.softwareengineering.values.Gender;
 import de.dhbw.softwareengineering.values.Name;
+import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Document(collection = "person")
+@Builder
 public class Person {
     @Id
     private UUID id;
