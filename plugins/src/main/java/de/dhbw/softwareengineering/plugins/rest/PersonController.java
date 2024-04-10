@@ -30,8 +30,8 @@ public class PersonController {
         this.service = service;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public PersonRepresentation create(
             @Parameter(description = "Person to be created.")
             @RequestBody @Valid PersonRepresentation person
@@ -39,23 +39,23 @@ public class PersonController {
         return service.create(person);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<PersonRepresentation> getAll(){
 
         return service.getAll();
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public PersonRepresentation get(
             @PathVariable UUID id)
     {
         return service.get(id);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public PersonRepresentation update(
             @PathVariable UUID id,
             @Parameter(description = "Updated person information")
@@ -64,8 +64,8 @@ public class PersonController {
         return service.update(id, person);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(@PathVariable UUID id){
         service.delete(id);
     }

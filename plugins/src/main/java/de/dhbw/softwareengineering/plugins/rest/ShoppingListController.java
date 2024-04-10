@@ -29,32 +29,32 @@ public class ShoppingListController {
         this.service = service;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public ShoppingListRepresentation create(
             @RequestBody UUID personUuid)
     {
         return service.create(personUuid);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public ShoppingListRepresentation get(
             @PathVariable UUID uuid)
     {
         return service.getShoppingList(uuid);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{uuid}/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<ShoppingItem> getList(
             @PathVariable UUID uuid)
     {
         return service.getShoppingItemList(uuid);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping(path = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ShoppingListRepresentation addItem(
             @PathVariable UUID uuid,
             @RequestBody @Valid ShoppingItem item)
@@ -62,8 +62,8 @@ public class ShoppingListController {
         return service.addShoppingItem(uuid, item);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{uuid}")
+    @ResponseStatus(HttpStatus.OK)
     public void delete(
             @PathVariable UUID uuid)
     {

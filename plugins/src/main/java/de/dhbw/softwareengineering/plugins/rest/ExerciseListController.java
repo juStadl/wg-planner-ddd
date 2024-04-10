@@ -31,39 +31,40 @@ public class ExerciseListController {
         this.service = service;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public ExerciseListRepresentation create()
     {
         return service.create();
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public ExerciseListRepresentation get(
             @PathVariable UUID uuid)
     {
         return service.getObject(uuid);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{uuid}/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<Exercise> getList(
             @PathVariable UUID uuid)
     {
         return service.getList(uuid);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("/{uuid}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(
             @PathVariable UUID uuid)
     {
         service.delete(uuid);
     }
 
-    @ResponseStatus(HttpStatus.OK)
+
     @PostMapping(value = "/{uuid}/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public ExerciseListRepresentation addExercise(
        @PathVariable UUID uuid,
        @RequestBody @Valid Exercise exercise)
@@ -71,8 +72,8 @@ public class ExerciseListController {
         return service.addExercise(uuid, exercise);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping(value = "/{uuid}/updateStatus", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ExerciseListRepresentation updateStatus(
             @PathVariable UUID uuid,
             @RequestBody @Valid Status status)
