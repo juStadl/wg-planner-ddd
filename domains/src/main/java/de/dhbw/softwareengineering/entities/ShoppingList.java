@@ -13,7 +13,6 @@ public class ShoppingList {
     @Id
     private UUID id;
     private List<ShoppingItem> shoppingItemList;
-    private Double totalPrice;
     private UUID personUUID;
 
     public ShoppingList() {
@@ -22,7 +21,6 @@ public class ShoppingList {
     public ShoppingList(UUID personUUID) {
         this.id = UUID.randomUUID();
         this.shoppingItemList = new ArrayList<>();
-        this.totalPrice = 0.0;
         this.personUUID = personUUID;
     }
 
@@ -43,16 +41,12 @@ public class ShoppingList {
     }
 
     public Double getTotalPrice() {
-        for(ShoppingItem shoppingItem : shoppingItemList){
+        double totalPrice = 0.0;
+        for(ShoppingItem shoppingItem : shoppingItemList) {
             totalPrice += shoppingItem.getPrice();
         }
 
-        //TODO: nicht mehr speichern, sondern berechnen
         return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public UUID getPersonUUID() {

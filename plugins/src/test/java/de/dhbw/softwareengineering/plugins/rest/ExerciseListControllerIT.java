@@ -4,7 +4,6 @@ import de.dhbw.softwareengineering.ExerciseListService;
 import de.dhbw.softwareengineering.representations.ExerciseListRepresentation;
 import de.dhbw.softwareengineering.values.Exercise;
 import de.dhbw.softwareengineering.values.Status;
-import net.bytebuddy.description.annotation.AnnotationList.Empty;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

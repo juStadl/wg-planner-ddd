@@ -11,13 +11,11 @@ public class ShoppingListRepresentation {
 
     private final UUID id;
     private final List<ShoppingItem> shoppingItemList;
-    private final Double totalPrice;
     private final UUID personUUID;
 
-    public ShoppingListRepresentation(final UUID id, final List<ShoppingItem> shoppingItemList, final Double totalPrice, final UUID personUUID) {
+    public ShoppingListRepresentation(final UUID id, final List<ShoppingItem> shoppingItemList, final UUID personUUID) {
         this.id = id;
         this.shoppingItemList = shoppingItemList;
-        this.totalPrice = totalPrice;
         this.personUUID = personUUID;
     }
 
@@ -27,10 +25,6 @@ public class ShoppingListRepresentation {
 
     public List<ShoppingItem> getShoppingItemList() {
         return shoppingItemList;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
     }
 
     public UUID getPersonUUID() {
