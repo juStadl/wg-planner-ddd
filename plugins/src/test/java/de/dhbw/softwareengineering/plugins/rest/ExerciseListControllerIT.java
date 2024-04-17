@@ -18,9 +18,12 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -89,6 +92,69 @@ class ExerciseListControllerIT {
                 .andReturn();
     }
 
-    //TODO: write other test cases too
+    @Test
+    void ExerciseListController_delete_DeletesExerciseListWithGivenId() throws Exception{
+        UUID uuid = UUID.randomUUID();
+        doNothing().when(exerciseListService).delete(uuid);
+
+        mockMvc.perform(delete("/exerciseList/{uuid}", uuid))
+                .andDo(print())
+                .andExpect(status().isAccepted())
+                .andReturn();
+    }
+
+    @Test
+    void ExerciseListController_addExercise_ReturnsUpdatedExerciseListRepresentation() throws Exception{
+        UUID listUuid = UUID.fromString("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+        UUID personUuid = UUID.fromString("3fa85f64-5717-4562-b3fc-2c963f66afa5");
+        ExerciseListRepresentation exerciseListRepresentation = ExerciseListRepresentation.builder()
+                .id(listUuid)
+                .list(new ArrayList<>())
+                .status(Status.TODO)
+                .build();
+
+        Exercise e = new Exercise("testTitle", "testDescription", personUuid);
+        exerciseListRepresentation.getList().add(e);
+
+        when(exerciseListService.addExercise(any(UUID.class), any(Exercise.class))).thenReturn(exerciseListRepresentation);
+
+        mockMvc.perform(post("/exerciseList/{uuid}/add", listUuid)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content("{\"uuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa4\",\"title\":\"testTitle\",\"description\":\"testDescription\",\"personUuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa5\"}"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.list.[0].uuid").isNotEmpty())
+                .andExpect(jsonPath("$.list.[0].title").value("testTitle"))
+                .andExpect(jsonPath("$.list.[0].description").value("testDescription"))
+                .andExpect(jsonPath("$.list.[0].personUuid").value(personUuid.toString()))
+                .andReturn();
+    }
+
+    @Test
+    void ExerciseListController_updateStatus_ReturnsExerciseListRepresentationWithUpdatedStatus() throws Exception{
+        ExerciseListRepresentation exerciseListRepresentation = ExerciseListRepresentation.builder()
+                .id(UUID.randomUUID())
+                .status(Status.TODO)
+                .list(new ArrayList<>())
+                .build();
+
+        ExerciseListRepresentation updatedStatus = ExerciseListRepresentation.builder()
+                .id(exerciseListRepresentation.getId())
+                .list(exerciseListRepresentation.getList())
+                .status(Status.IN_PROGRESS)
+                .build();
+
+        when(exerciseListService.updateStatus(any(UUID.class), any(Status.class))).thenReturn(updatedStatus);
+
+        mockMvc.perform(put("/exerciseList/{uuid}/updateStatus", UUID.randomUUID())
+                            .contentType(MediaType.APPLICATION_JSON_VALUE)
+                            .content("\"IN_PROGRESS\""))
+                .andDo(print())
+                .andExpect(status().isAccepted())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.status").value("IN_PROGRESS"))
+                .andReturn();
+    }
 
 }
