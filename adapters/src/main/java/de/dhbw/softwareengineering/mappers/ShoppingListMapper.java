@@ -12,7 +12,6 @@ public class ShoppingListMapper {
                 .id(shoppingList.getId())
                 .shoppingItemList(shoppingList.getShoppingItemList())
                 .personUUID(shoppingList.getPersonUUID())
-                .totalPrice(shoppingList.getTotalPrice())
                 .build();
     }
 }

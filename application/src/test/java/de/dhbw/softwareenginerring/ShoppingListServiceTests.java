@@ -42,7 +42,6 @@ class ShoppingListServiceTests {
 
         ShoppingListRepresentation shoppingListRepresentation = ShoppingListRepresentation.builder()
                 .id(uuid)
-                .totalPrice(shoppingList.getTotalPrice())
                 .shoppingItemList(shoppingList.getShoppingItemList())
                 .personUUID(shoppingList.getPersonUUID())
                 .build();
@@ -70,7 +69,6 @@ class ShoppingListServiceTests {
                 .id(uuid)
                 .personUUID(shoppingList.getPersonUUID())
                 .shoppingItemList(shoppingList.getShoppingItemList())
-                .totalPrice(shoppingList.getTotalPrice())
                 .build();
 
         when(shoppingListMapper.toShoppingLingRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
@@ -107,7 +105,6 @@ class ShoppingListServiceTests {
                 .id(uuid)
                 .shoppingItemList(shoppingList.getShoppingItemList())
                 .personUUID(shoppingList.getPersonUUID())
-                .totalPrice(shoppingList.getTotalPrice())
                 .build();
 
         when(shoppingListRepository.findById(uuid)).thenReturn(Optional.of(shoppingList));
@@ -129,7 +126,6 @@ class ShoppingListServiceTests {
                 .id(uuid)
                 .shoppingItemList(shoppingList.getShoppingItemList())
                 .personUUID(shoppingList.getPersonUUID())
-                .totalPrice(shoppingList.getTotalPrice())
                 .build();
 
         when(shoppingListRepository.findById(uuid)).thenReturn(Optional.of(shoppingList));

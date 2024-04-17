@@ -63,7 +63,7 @@ public class ShoppingListController {
     }
 
     @DeleteMapping("/{uuid}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(
             @PathVariable UUID uuid)
     {
