@@ -55,7 +55,7 @@ public class ExerciseListService {
 
     public ExerciseListRepresentation addExercise(UUID uuid, Exercise e){
         ExerciseList exerciseList = getExerciseList(uuid);
-        Exercise exercise = new Exercise(e.getTitle(), e.getDescription(), e.getPersonUuid());
+        Exercise exercise = new Exercise(e.title(), e.description(), e.personUuid());
         exerciseList.getList().add(exercise);
 
         return exerciseListMapper.toExerciseListRepresentation(exerciseListRepository.save(exerciseList));

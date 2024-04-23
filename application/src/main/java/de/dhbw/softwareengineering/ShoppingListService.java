@@ -42,7 +42,7 @@ public class ShoppingListService {
 
     public ShoppingListRepresentation addShoppingItem(UUID listUuid, ShoppingItem shoppingItem){
         ShoppingList shoppingList = get(listUuid);
-        ShoppingItem item = new ShoppingItem(shoppingItem.getTitle(), shoppingItem.getQuantity(), shoppingItem.getPrice());
+        ShoppingItem item = new ShoppingItem(shoppingItem.title(), shoppingItem.quantity(), shoppingItem.price());
         shoppingList.getShoppingItemList().add(item);
 
         return shoppingListMapper.toShoppingLingRepresentation(shoppingListRepository.save(shoppingList));
