@@ -43,7 +43,7 @@ public class ShoppingList {
     public Double getTotalPrice() {
         double totalPrice = 0.0;
         for(ShoppingItem shoppingItem : shoppingItemList) {
-            totalPrice += shoppingItem.getPrice();
+            totalPrice += shoppingItem.price();
         }
 
         return totalPrice;

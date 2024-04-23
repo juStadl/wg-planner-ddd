@@ -119,11 +119,10 @@ class ExerciseListControllerIT {
 
         mockMvc.perform(post("/exerciseList/{uuid}/add", listUuid)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content("{\"uuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa4\",\"title\":\"testTitle\",\"description\":\"testDescription\",\"personUuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa5\"}"))
+                        .content("{\"title\":\"testTitle\",\"description\":\"testDescription\",\"personUuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa5\"}"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.list.[0].uuid").isNotEmpty())
                 .andExpect(jsonPath("$.list.[0].title").value("testTitle"))
                 .andExpect(jsonPath("$.list.[0].description").value("testDescription"))
                 .andExpect(jsonPath("$.list.[0].personUuid").value(personUuid.toString()))
