@@ -86,7 +86,7 @@ class ExerciseListServiceTests {
 
         Assertions.assertThatThrownBy(() -> exerciseListService.getObject(notExistingUuid))
                 .isInstanceOf(ExerciseListNotFoundException.class)
-                .hasMessageContaining("No exerciselist with such a UUID.");
+                .hasMessageContaining("No exerciseList with such a UUID.");
     }
 
     @Test
@@ -139,7 +139,7 @@ class ExerciseListServiceTests {
 
         Assertions.assertThatThrownBy(() -> exerciseListService.updateStatus(uuid, Status.IN_PROGRESS))
                         .isInstanceOf(ExerciseListNotFoundException.class)
-                                .hasMessageContaining("No exerciselist with such a UUID");
+                                .hasMessageContaining("No exerciseList with such a UUID.");
     }
 
     @Test
@@ -192,6 +192,6 @@ class ExerciseListServiceTests {
 
         Assertions.assertThatThrownBy(() -> exerciseListService.delete(randomUUID))
                 .isInstanceOf(ExerciseListNotFoundException.class)
-                .hasMessageContaining("No exerciselist with such a UUID.");
+                .hasMessageContaining("No exerciseList with such a UUID.");
     }
 }
