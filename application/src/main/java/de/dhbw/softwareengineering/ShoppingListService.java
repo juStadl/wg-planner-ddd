@@ -28,11 +28,11 @@ public class ShoppingListService {
 
     public ShoppingListRepresentation create(UUID personUuid){
         ShoppingList shoppingList = new ShoppingList(personUuid);
-        return shoppingListMapper.toShoppingLingRepresentation(shoppingListRepository.insert(shoppingList));
+        return shoppingListMapper.toShoppingListRepresentation(shoppingListRepository.insert(shoppingList));
     }
 
     public ShoppingListRepresentation getShoppingList(UUID uuid) throws ShoppingListNotFoundException {
-        return shoppingListMapper.toShoppingLingRepresentation(shoppingListRepository.findById(uuid)
+        return shoppingListMapper.toShoppingListRepresentation(shoppingListRepository.findById(uuid)
                 .orElseThrow(() -> new ShoppingListNotFoundException(ERROR_MESSAGE)));
     }
 
@@ -45,7 +45,7 @@ public class ShoppingListService {
         ShoppingItem item = new ShoppingItem(shoppingItem.title(), shoppingItem.quantity(), shoppingItem.price());
         shoppingList.getShoppingItemList().add(item);
 
-        return shoppingListMapper.toShoppingLingRepresentation(shoppingListRepository.save(shoppingList));
+        return shoppingListMapper.toShoppingListRepresentation(shoppingListRepository.save(shoppingList));
     }
 
     public void delete(UUID uuid) throws ShoppingListNotFoundException{

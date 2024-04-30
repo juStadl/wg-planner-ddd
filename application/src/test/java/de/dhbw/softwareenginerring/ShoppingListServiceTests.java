@@ -47,7 +47,7 @@ class ShoppingListServiceTests {
                 .build();
 
         when(shoppingListRepository.insert(Mockito.any())).thenReturn(shoppingList);
-        when(shoppingListMapper.toShoppingLingRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
+        when(shoppingListMapper.toShoppingListRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
 
         ShoppingListRepresentation savedShoppingList = shoppingListService.create(uuid);
 
@@ -71,7 +71,7 @@ class ShoppingListServiceTests {
                 .shoppingItemList(shoppingList.getShoppingItemList())
                 .build();
 
-        when(shoppingListMapper.toShoppingLingRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
+        when(shoppingListMapper.toShoppingListRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
 
         ShoppingListRepresentation retrievedShoppingList = shoppingListService.getShoppingList(uuid);
 
@@ -108,7 +108,7 @@ class ShoppingListServiceTests {
                 .build();
 
         when(shoppingListRepository.findById(uuid)).thenReturn(Optional.of(shoppingList));
-        when(shoppingListMapper.toShoppingLingRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
+        when(shoppingListMapper.toShoppingListRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
 
         List<ShoppingItem> result = shoppingListService.getShoppingItemList(uuid);
 
@@ -130,7 +130,7 @@ class ShoppingListServiceTests {
 
         when(shoppingListRepository.findById(uuid)).thenReturn(Optional.of(shoppingList));
         when(shoppingListRepository.save(Mockito.any())).thenReturn(shoppingList);
-        when(shoppingListMapper.toShoppingLingRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
+        when(shoppingListMapper.toShoppingListRepresentation(shoppingList)).thenReturn(shoppingListRepresentation);
 
         ShoppingListRepresentation result = shoppingListService.addShoppingItem(uuid, shoppingItem);
 
