@@ -1,5 +1,6 @@
 package de.dhbw.softwareengineering.representations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dhbw.softwareengineering.values.Exercise;
 import de.dhbw.softwareengineering.values.Status;
 import lombok.Builder;
@@ -11,7 +12,11 @@ import java.util.UUID;
 public class ExerciseListRepresentation {
 
     private final UUID id;
+
+    @JsonProperty("exerciseList")
     private final List<Exercise> list;
+
+    @JsonProperty("status")
     private final Status status;
 
     public ExerciseListRepresentation(UUID id, final List<Exercise> list, final Status status) {

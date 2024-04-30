@@ -51,7 +51,7 @@ class ShoppingListControllerIT {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.shoppingItemList").exists())
-                .andExpect(jsonPath("$.personUUID").value("3fa85f64-5717-4562-b3fc-2c963f66afa6"))
+                .andExpect(jsonPath("$.personUuid").value("3fa85f64-5717-4562-b3fc-2c963f66afa6"))
                 .andReturn();
     }
 
@@ -72,7 +72,7 @@ class ShoppingListControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(uuid.toString()))
                 .andExpect(jsonPath("$.shoppingItemList").exists())
-                .andExpect(jsonPath("$.personUUID").value(personUuid.toString()))
+                .andExpect(jsonPath("$.personUuid").value(personUuid.toString()))
                 .andReturn();
     }
 
@@ -123,7 +123,7 @@ class ShoppingListControllerIT {
                 .andExpect(jsonPath("$.shoppingItemList.size()").value(1))
                 .andExpect(jsonPath("$.shoppingItemList.[0].title").value("title"))
                 .andExpect(jsonPath("$.shoppingItemList.[0].quantity").value(1))
-                .andExpect(jsonPath("$.personUUID").value(personUuid.toString()))
+                .andExpect(jsonPath("$.personUuid").value(personUuid.toString()))
                 .andReturn();
 
     }
