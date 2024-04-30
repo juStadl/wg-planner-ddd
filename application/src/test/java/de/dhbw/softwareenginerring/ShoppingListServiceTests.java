@@ -87,7 +87,7 @@ class ShoppingListServiceTests {
 
         Assertions.assertThatThrownBy(() -> shoppingListService.getShoppingList(notExistingUuid))
                 .isInstanceOf(ShoppingListNotFoundException.class)
-                .hasMessageContaining("No shoppinglist with such a UUID.");
+                .hasMessageContaining("No shoppingList with such a UUID.");
     }
 
     @Test
@@ -161,7 +161,7 @@ class ShoppingListServiceTests {
 
         Assertions.assertThatThrownBy(() -> shoppingListService.delete(uuid))
                 .isInstanceOf(ShoppingListNotFoundException.class)
-                .hasMessageContaining("No shoppinglist with such a UUID.");
+                .hasMessageContaining("No shoppingList with such a UUID.");
     }
 
 }
