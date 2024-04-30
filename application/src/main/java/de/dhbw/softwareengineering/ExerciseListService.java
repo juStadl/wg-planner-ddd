@@ -20,6 +20,7 @@ public class ExerciseListService implements ExerciseListServiceInterface {
 
     private final ExerciseListRepository exerciseListRepository;
     private final ExerciseListMapper exerciseListMapper;
+    private static final String EXERCISELIST_NOT_FOUND_MESSAGE = "No exerciseList with such a UUID.";
 
     @Autowired
     public ExerciseListService(ExerciseListRepository exerciseListRepository, ExerciseListMapper exerciseListMapper) {
@@ -36,8 +37,7 @@ public class ExerciseListService implements ExerciseListServiceInterface {
 
     @Override
     public ExerciseListRepresentation getObject(UUID uuid) throws ExerciseListNotFoundException {
-        return exerciseListMapper.toExerciseListRepresentation(exerciseListRepository.findById(uuid)
-                .orElseThrow(() -> new ExerciseListNotFoundException("No exerciselist with such a UUID.")));
+        return exerciseListMapper.toExerciseListRepresentation(validateAndGetExerciseList(uuid));
     }
 
     @Override
@@ -47,8 +47,7 @@ public class ExerciseListService implements ExerciseListServiceInterface {
 
     @Override
     public ExerciseList getExerciseList(UUID uuid){
-        return exerciseListRepository.findById(uuid)
-                .orElseThrow(() -> new ExerciseListNotFoundException("No exerciselist with such a UUID"));
+        return validateAndGetExerciseList(uuid);
     }
 
     @Override
@@ -70,11 +69,16 @@ public class ExerciseListService implements ExerciseListServiceInterface {
 
     @Override
     public void delete(UUID uuid) throws ExerciseListNotFoundException{
-        Optional<ExerciseList> optionalExerciseList = exerciseListRepository.findById(uuid);
-
-        if(optionalExerciseList.isEmpty()){
-            throw new ExerciseListNotFoundException("No exerciselist with such a UUID.");
-        }
+        validateAndGetExerciseList(uuid);
         exerciseListRepository.delete(uuid);
+    }
+
+    private ExerciseList validateAndGetExerciseList(UUID uuid){
+        Optional<ExerciseList> optionalExerciseList = exerciseListRepository.findById(uuid);
+        if (optionalExerciseList.isEmpty()){
+            throw new ExerciseListNotFoundException(EXERCISELIST_NOT_FOUND_MESSAGE);
+        }
+
+        return optionalExerciseList.get();
     }
 }

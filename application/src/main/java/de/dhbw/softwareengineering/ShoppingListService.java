@@ -19,7 +19,7 @@ public class ShoppingListService implements ShoppingListServiceInterface {
 
     private final ShoppingListRepository shoppingListRepository;
     private final ShoppingListMapper shoppingListMapper;
-    private static final String ERROR_MESSAGE = "No shoppinglist with such a UUID.";
+    private static final String SHOPPINGLIST_NOT_FOUND_MESSAGE = "No shoppingList with such a UUID.";
 
     @Autowired
     public ShoppingListService(ShoppingListRepository shoppingListRepository, ShoppingListMapper shoppingListMapper) {
@@ -35,8 +35,7 @@ public class ShoppingListService implements ShoppingListServiceInterface {
 
     @Override
     public ShoppingListRepresentation getShoppingList(UUID uuid) throws ShoppingListNotFoundException {
-        return shoppingListMapper.toShoppingListRepresentation(shoppingListRepository.findById(uuid)
-                .orElseThrow(() -> new ShoppingListNotFoundException(ERROR_MESSAGE)));
+        return shoppingListMapper.toShoppingListRepresentation(validateAndGetShoppingList(uuid));
     }
 
     @Override
@@ -55,18 +54,22 @@ public class ShoppingListService implements ShoppingListServiceInterface {
 
     @Override
     public void delete(UUID uuid) throws ShoppingListNotFoundException{
-        Optional<ShoppingList> optionalShoppingList = shoppingListRepository.findById(uuid);
-
-        if(optionalShoppingList.isEmpty()){
-            throw new ShoppingListNotFoundException(ERROR_MESSAGE);
-        }
+        validateAndGetShoppingList(uuid);
 
         shoppingListRepository.delete(uuid);
     }
 
     @Override
     public ShoppingList get(UUID uuid){
-        return shoppingListRepository.findById(uuid)
-                .orElseThrow(() -> new ShoppingListNotFoundException(ERROR_MESSAGE));
+       return validateAndGetShoppingList(uuid);
+    }
+
+    private ShoppingList validateAndGetShoppingList(UUID uuid){
+        Optional<ShoppingList> optionalShoppingList = shoppingListRepository.findById(uuid);
+        if (optionalShoppingList.isEmpty()){
+            throw new ShoppingListNotFoundException(SHOPPINGLIST_NOT_FOUND_MESSAGE);
+        }
+
+        return optionalShoppingList.get();
     }
 }

@@ -17,7 +17,7 @@ import java.util.UUID;
 public class PersonService implements PersonServiceInterface {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
-    private static final String EXCEPTION_MESSAGE = "No person with such a UUID.";
+    private static final String PERSON_NOT_FOUND_MESSAGE = "No person with such a UUID.";
 
     @Autowired
     public PersonService(PersonRepository personRepository, PersonMapper personMapper) {
@@ -39,8 +39,7 @@ public class PersonService implements PersonServiceInterface {
     }
     @Override
     public PersonRepresentation get(UUID uuid) throws PersonNotFoundException{
-        return personMapper.toPersonRepresentation(personRepository.findByUuid(uuid)
-                .orElseThrow(() -> new PersonNotFoundException(EXCEPTION_MESSAGE)));
+        return personMapper.toPersonRepresentation(validateAndGetPerson(uuid));
     }
 
     @Override
@@ -51,11 +50,7 @@ public class PersonService implements PersonServiceInterface {
 
     @Override
     public void delete(UUID uuid){
-        Optional<Person> optionalPerson = personRepository.findByUuid(uuid);
-
-        if(optionalPerson.isEmpty()){
-            throw new PersonNotFoundException(EXCEPTION_MESSAGE);
-        }
+        validateAndGetPerson(uuid);
         personRepository.delete(uuid);
     }
 
@@ -73,8 +68,15 @@ public class PersonService implements PersonServiceInterface {
 
     @Override
     public Person getPerson(UUID uuid) {
-        return personRepository.findByUuid(uuid)
-                .orElseThrow(() -> new PersonNotFoundException(PersonService.EXCEPTION_MESSAGE));
+        return validateAndGetPerson(uuid);
+    }
+
+    private Person validateAndGetPerson(UUID uuid){
+        Optional<Person> optionalPerson = personRepository.findByUuid(uuid);
+        if (optionalPerson.isEmpty()){
+            throw new PersonNotFoundException(PERSON_NOT_FOUND_MESSAGE);
+        }
+        return optionalPerson.get();
     }
 
 }
