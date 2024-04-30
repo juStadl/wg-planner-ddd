@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShoppingListMapper {
 
-    public ShoppingListRepresentation toShoppingLingRepresentation(ShoppingList shoppingList){
+    public ShoppingListRepresentation toShoppingListRepresentation(ShoppingList shoppingList){
         return ShoppingListRepresentation.builder()
                 .id(shoppingList.getId())
                 .shoppingItemList(shoppingList.getShoppingItemList())
