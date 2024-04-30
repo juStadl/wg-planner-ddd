@@ -1,6 +1,5 @@
 package de.dhbw.softwareengineering.interfaces;
 
-import de.dhbw.softwareengineering.PersonService;
 import de.dhbw.softwareengineering.entities.Person;
 import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
 import de.dhbw.softwareengineering.representations.PersonRepresentation;
