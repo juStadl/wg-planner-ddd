@@ -123,9 +123,9 @@ class ExerciseListControllerIT {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.list.[0].title").value("testTitle"))
-                .andExpect(jsonPath("$.list.[0].description").value("testDescription"))
-                .andExpect(jsonPath("$.list.[0].personUuid").value(personUuid.toString()))
+                .andExpect(jsonPath("$.exerciseList.[0].title").value("testTitle"))
+                .andExpect(jsonPath("$.exerciseList.[0].description").value("testDescription"))
+                .andExpect(jsonPath("$.exerciseList.[0].personUuid").value(personUuid.toString()))
                 .andReturn();
     }
 
