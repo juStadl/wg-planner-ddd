@@ -1,6 +1,7 @@
 package de.dhbw.softwareenginerring;
 
 import de.dhbw.softwareengineering.PersonService;
+import de.dhbw.softwareengineering.domainservice.PersonDomainService;
 import de.dhbw.softwareengineering.entities.Person;
 import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
 import de.dhbw.softwareengineering.mappers.PersonMapper;
@@ -34,6 +35,8 @@ class PersonServiceTests {
 
     @Mock
     private PersonMapper personMapper;
+    @Mock
+    private PersonDomainService personDomainService;
 
     @InjectMocks
     private PersonService personService;
@@ -42,18 +45,19 @@ class PersonServiceTests {
     void PersonService_Create_ReturnsPersonRepresentation(){
        Person person = Person.builder()
                .name(new Name("testName", "testLastname"))
-               .address(new Address("testStreet", "testCity", "testZip"))
+               .address(new Address("testStreet", "testCity", "12345"))
                .birthDate(LocalDate.now())
                .gender(Gender.MALE)
                .build();
 
        PersonRepresentation personRepresentation = PersonRepresentation.builder()
                .name(new Name("testName", "testLastname"))
-               .address(new Address("testStreet", "testCity", "testZip"))
+               .address(new Address("testStreet", "testCity", "12345"))
                .birthDate(LocalDate.now())
                .gender(Gender.MALE)
                .build();
 
+        when(personDomainService.validateZipCode(personRepresentation.getAddress().zipCode())).thenReturn(true);
         when(personRepository.insert(Mockito.any(Person.class))).thenReturn(person);
         when(personMapper.toPersonRepresentation(Mockito.any(Person.class))).thenReturn(personRepresentation);
 
@@ -68,7 +72,7 @@ class PersonServiceTests {
         Person person = Person.builder()
                 .id(uuid)
                 .name(new Name("testName", "testLastname"))
-                .address(new Address("testStreet", "testCity", "testZip"))
+                .address(new Address("testStreet", "testCity", "12345"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.MALE)
                 .build();
@@ -78,7 +82,7 @@ class PersonServiceTests {
         PersonRepresentation personRepresentation = PersonRepresentation.builder()
                 .id(uuid)
                 .name(new Name("testName", "testLastname"))
-                .address(new Address("testStreet", "testCity", "testZip"))
+                .address(new Address("testStreet", "testCity", "12345"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.MALE)
                 .build();
@@ -108,7 +112,7 @@ class PersonServiceTests {
         Person person1 = Person.builder()
                 .id(UUID.randomUUID())
                 .name(new Name("testName1", "testLastname1"))
-                .address(new Address("testStreet1", "testCity1", "testZip1"))
+                .address(new Address("testStreet1", "testCity1", "12345"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.MALE)
                 .build();
@@ -116,7 +120,7 @@ class PersonServiceTests {
         Person person2 = Person.builder()
                 .id(UUID.randomUUID())
                 .name(new Name("testName2", "testLastname2"))
-                .address(new Address("testStreet2", "testCity2", "testZip2"))
+                .address(new Address("testStreet2", "testCity2", "67890"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.FEMALE)
                 .build();
@@ -124,7 +128,7 @@ class PersonServiceTests {
         PersonRepresentation personRepresentation1 = PersonRepresentation.builder()
                 .id(person1.getId())
                 .name(new Name("testName1", "testLastname1"))
-                .address(new Address("testStreet1", "testCity1", "testZip1"))
+                .address(new Address("testStreet1", "testCity1", "12345"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.MALE)
                 .build();
@@ -132,7 +136,7 @@ class PersonServiceTests {
         PersonRepresentation personRepresentation2 = PersonRepresentation.builder()
                 .id(person2.getId())
                 .name(new Name("testName2", "testLastname2"))
-                .address(new Address("testStreet2", "testCity2", "testZip2"))
+                .address(new Address("testStreet2", "testCity2", "67890"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.FEMALE)
                 .build();
@@ -154,7 +158,7 @@ class PersonServiceTests {
         Person existingPerson = Person.builder()
                 .id(uuid)
                 .name(new Name("testName", "testLastname"))
-                .address(new Address("testStreet", "testCity", "testZip"))
+                .address(new Address("testStreet", "testCity", "12345"))
                 .birthDate(LocalDate.now())
                 .gender(Gender.MALE)
                 .build();
