@@ -1,7 +1,9 @@
 package de.dhbw.softwareengineering;
 
+import de.dhbw.softwareengineering.domainservice.PersonDomainService;
 import de.dhbw.softwareengineering.entities.Person;
 import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
+import de.dhbw.softwareengineering.exceptions.ZipCodeException;
 import de.dhbw.softwareengineering.interfaces.PersonServiceInterface;
 import de.dhbw.softwareengineering.mappers.PersonMapper;
 import de.dhbw.softwareengineering.repositories.PersonRepository;
@@ -18,24 +20,30 @@ public class PersonService implements PersonServiceInterface {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
     private static final String PERSON_NOT_FOUND_MESSAGE = "No person with such a UUID.";
+    private final PersonDomainService personDomainService;
 
     @Autowired
-    public PersonService(PersonRepository personRepository, PersonMapper personMapper) {
+    public PersonService(PersonRepository personRepository, PersonMapper personMapper, PersonDomainService personDomainService) {
         this.personRepository = personRepository;
         this.personMapper = personMapper;
+        this.personDomainService = personDomainService;
     }
 
     @Override
     public PersonRepresentation create(PersonRepresentation personRepresentation){
-        Person person = new Person(
-                personRepresentation.getId(),
-                personRepresentation.getName(),
-                personRepresentation.getAddress(),
-                personRepresentation.getBirthDate(),
-                personRepresentation.getGender()
-        );
+        if(personDomainService.validateZipCode(personRepresentation.getAddress().zipCode())){
+            Person person = new Person(
+                    personRepresentation.getName(),
+                    personRepresentation.getAddress(),
+                    personRepresentation.getBirthDate(),
+                    personRepresentation.getGender()
+            );
 
-        return personMapper.toPersonRepresentation(personRepository.insert(person));
+            return personMapper.toPersonRepresentation(personRepository.insert(person));
+        }
+        else {
+            throw new ZipCodeException("ZipCode has to be five characters");
+        }
     }
     @Override
     public PersonRepresentation get(UUID uuid) throws PersonNotFoundException{
