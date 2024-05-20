@@ -1,8 +1,8 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.ShoppingListService;
-import de.dhbw.softwareengineering.representations.ShoppingListRepresentation;
-import de.dhbw.softwareengineering.values.ShoppingItem;
+import de.dhbw.softwareengineering.shoppingList.representation.ShoppingListRepresentation;
+import de.dhbw.softwareengineering.shoppingList.values.ShoppingItem;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package de.dhbw.softwareengineering.plugins.persistence;
 
-import de.dhbw.softwareengineering.entities.ShoppingList;
+import de.dhbw.softwareengineering.shoppingList.ShoppingList;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;

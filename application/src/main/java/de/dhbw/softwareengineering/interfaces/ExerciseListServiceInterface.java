@@ -1,10 +1,10 @@
 package de.dhbw.softwareengineering.interfaces;
 
-import de.dhbw.softwareengineering.entities.ExerciseList;
-import de.dhbw.softwareengineering.exceptions.ExerciseListNotFoundException;
-import de.dhbw.softwareengineering.representations.ExerciseListRepresentation;
-import de.dhbw.softwareengineering.values.Exercise;
-import de.dhbw.softwareengineering.values.Status;
+import de.dhbw.softwareengineering.exerciseList.ExerciseList;
+import de.dhbw.softwareengineering.exerciseList.exceptions.ExerciseListNotFoundException;
+import de.dhbw.softwareengineering.exerciseList.representation.ExerciseListRepresentation;
+import de.dhbw.softwareengineering.exerciseList.values.Exercise;
+import de.dhbw.softwareengineering.exerciseList.values.Status;
 
 import java.util.List;
 import java.util.UUID;

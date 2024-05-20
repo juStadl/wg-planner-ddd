@@ -1,12 +1,12 @@
 package de.dhbw.softwareenginerring;
 
 import de.dhbw.softwareengineering.ShoppingListService;
-import de.dhbw.softwareengineering.entities.ShoppingList;
-import de.dhbw.softwareengineering.exceptions.ShoppingListNotFoundException;
-import de.dhbw.softwareengineering.mappers.ShoppingListMapper;
-import de.dhbw.softwareengineering.repositories.ShoppingListRepository;
-import de.dhbw.softwareengineering.representations.ShoppingListRepresentation;
-import de.dhbw.softwareengineering.values.ShoppingItem;
+import de.dhbw.softwareengineering.shoppingList.ShoppingList;
+import de.dhbw.softwareengineering.shoppingList.exceptions.ShoppingListNotFoundException;
+import de.dhbw.softwareengineering.shoppingList.mapper.ShoppingListMapper;
+import de.dhbw.softwareengineering.shoppingList.ShoppingListRepository;
+import de.dhbw.softwareengineering.shoppingList.representation.ShoppingListRepresentation;
+import de.dhbw.softwareengineering.shoppingList.values.ShoppingItem;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

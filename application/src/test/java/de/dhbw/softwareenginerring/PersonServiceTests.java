@@ -1,15 +1,15 @@
 package de.dhbw.softwareenginerring;
 
 import de.dhbw.softwareengineering.PersonService;
-import de.dhbw.softwareengineering.domainservice.PersonDomainService;
-import de.dhbw.softwareengineering.entities.Person;
-import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
-import de.dhbw.softwareengineering.mappers.PersonMapper;
-import de.dhbw.softwareengineering.repositories.PersonRepository;
-import de.dhbw.softwareengineering.representations.PersonRepresentation;
-import de.dhbw.softwareengineering.values.Address;
-import de.dhbw.softwareengineering.values.Gender;
-import de.dhbw.softwareengineering.values.Name;
+import de.dhbw.softwareengineering.person.domainService.PersonDomainService;
+import de.dhbw.softwareengineering.person.Person;
+import de.dhbw.softwareengineering.person.exceptions.PersonNotFoundException;
+import de.dhbw.softwareengineering.person.mapper.PersonMapper;
+import de.dhbw.softwareengineering.person.PersonRepository;
+import de.dhbw.softwareengineering.person.representation.PersonRepresentation;
+import de.dhbw.softwareengineering.person.values.Address;
+import de.dhbw.softwareengineering.person.values.Gender;
+import de.dhbw.softwareengineering.person.values.Name;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

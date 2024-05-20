@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.persistence;
 
-import de.dhbw.softwareengineering.entities.ExerciseList;
-import de.dhbw.softwareengineering.repositories.ExerciseListRepository;
+import de.dhbw.softwareengineering.exerciseList.ExerciseList;
+import de.dhbw.softwareengineering.exerciseList.ExerciseListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

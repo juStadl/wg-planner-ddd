@@ -1,9 +1,9 @@
 package de.dhbw.softwareengineering.interfaces;
 
-import de.dhbw.softwareengineering.entities.ShoppingList;
-import de.dhbw.softwareengineering.exceptions.ShoppingListNotFoundException;
-import de.dhbw.softwareengineering.representations.ShoppingListRepresentation;
-import de.dhbw.softwareengineering.values.ShoppingItem;
+import de.dhbw.softwareengineering.shoppingList.ShoppingList;
+import de.dhbw.softwareengineering.shoppingList.exceptions.ShoppingListNotFoundException;
+import de.dhbw.softwareengineering.shoppingList.representation.ShoppingListRepresentation;
+import de.dhbw.softwareengineering.shoppingList.values.ShoppingItem;
 
 import java.util.List;
 import java.util.UUID;
