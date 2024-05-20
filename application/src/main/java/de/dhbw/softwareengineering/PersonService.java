@@ -1,13 +1,13 @@
 package de.dhbw.softwareengineering;
 
-import de.dhbw.softwareengineering.domainservice.PersonDomainService;
-import de.dhbw.softwareengineering.entities.Person;
-import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
-import de.dhbw.softwareengineering.exceptions.ZipCodeException;
+import de.dhbw.softwareengineering.person.domainService.PersonDomainService;
+import de.dhbw.softwareengineering.person.Person;
+import de.dhbw.softwareengineering.person.exceptions.PersonNotFoundException;
+import de.dhbw.softwareengineering.person.exceptions.ZipCodeException;
 import de.dhbw.softwareengineering.interfaces.PersonServiceInterface;
-import de.dhbw.softwareengineering.mappers.PersonMapper;
-import de.dhbw.softwareengineering.repositories.PersonRepository;
-import de.dhbw.softwareengineering.representations.PersonRepresentation;
+import de.dhbw.softwareengineering.person.mapper.PersonMapper;
+import de.dhbw.softwareengineering.person.PersonRepository;
+import de.dhbw.softwareengineering.person.representation.PersonRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

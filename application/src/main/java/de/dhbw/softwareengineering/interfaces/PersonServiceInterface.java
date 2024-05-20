@@ -1,8 +1,8 @@
 package de.dhbw.softwareengineering.interfaces;
 
-import de.dhbw.softwareengineering.entities.Person;
-import de.dhbw.softwareengineering.exceptions.PersonNotFoundException;
-import de.dhbw.softwareengineering.representations.PersonRepresentation;
+import de.dhbw.softwareengineering.person.Person;
+import de.dhbw.softwareengineering.person.exceptions.PersonNotFoundException;
+import de.dhbw.softwareengineering.person.representation.PersonRepresentation;
 
 import java.util.List;
 import java.util.UUID;

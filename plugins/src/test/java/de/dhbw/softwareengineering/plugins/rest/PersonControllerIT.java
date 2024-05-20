@@ -1,10 +1,10 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.PersonService;
-import de.dhbw.softwareengineering.representations.PersonRepresentation;
-import de.dhbw.softwareengineering.values.Address;
-import de.dhbw.softwareengineering.values.Gender;
-import de.dhbw.softwareengineering.values.Name;
+import de.dhbw.softwareengineering.person.representation.PersonRepresentation;
+import de.dhbw.softwareengineering.person.values.Address;
+import de.dhbw.softwareengineering.person.values.Gender;
+import de.dhbw.softwareengineering.person.values.Name;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

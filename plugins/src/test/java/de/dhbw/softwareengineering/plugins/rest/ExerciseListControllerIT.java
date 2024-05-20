@@ -1,9 +1,9 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.ExerciseListService;
-import de.dhbw.softwareengineering.representations.ExerciseListRepresentation;
-import de.dhbw.softwareengineering.values.Exercise;
-import de.dhbw.softwareengineering.values.Status;
+import de.dhbw.softwareengineering.exerciseList.representation.ExerciseListRepresentation;
+import de.dhbw.softwareengineering.exerciseList.values.Exercise;
+import de.dhbw.softwareengineering.exerciseList.values.Status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

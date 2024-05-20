@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.rest;
 
 import de.dhbw.softwareengineering.PersonService;
-import de.dhbw.softwareengineering.representations.PersonRepresentation;
+import de.dhbw.softwareengineering.person.representation.PersonRepresentation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

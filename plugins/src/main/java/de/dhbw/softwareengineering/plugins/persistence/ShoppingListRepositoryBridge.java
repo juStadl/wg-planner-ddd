@@ -1,7 +1,7 @@
 package de.dhbw.softwareengineering.plugins.persistence;
 
-import de.dhbw.softwareengineering.entities.ShoppingList;
-import de.dhbw.softwareengineering.repositories.ShoppingListRepository;
+import de.dhbw.softwareengineering.shoppingList.ShoppingList;
+import de.dhbw.softwareengineering.shoppingList.ShoppingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

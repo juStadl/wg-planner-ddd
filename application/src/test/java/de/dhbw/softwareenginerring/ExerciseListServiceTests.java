@@ -1,13 +1,13 @@
 package de.dhbw.softwareenginerring;
 
 import de.dhbw.softwareengineering.ExerciseListService;
-import de.dhbw.softwareengineering.entities.ExerciseList;
-import de.dhbw.softwareengineering.exceptions.ExerciseListNotFoundException;
-import de.dhbw.softwareengineering.mappers.ExerciseListMapper;
-import de.dhbw.softwareengineering.repositories.ExerciseListRepository;
-import de.dhbw.softwareengineering.representations.ExerciseListRepresentation;
-import de.dhbw.softwareengineering.values.Exercise;
-import de.dhbw.softwareengineering.values.Status;
+import de.dhbw.softwareengineering.exerciseList.ExerciseList;
+import de.dhbw.softwareengineering.exerciseList.exceptions.ExerciseListNotFoundException;
+import de.dhbw.softwareengineering.exerciseList.mapper.ExerciseListMapper;
+import de.dhbw.softwareengineering.exerciseList.ExerciseListRepository;
+import de.dhbw.softwareengineering.exerciseList.representation.ExerciseListRepresentation;
+import de.dhbw.softwareengineering.exerciseList.values.Exercise;
+import de.dhbw.softwareengineering.exerciseList.values.Status;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
